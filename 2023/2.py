@@ -5,54 +5,44 @@ from aocd import submit
 
 def parta():
     answer = 0
+    
     for game in data.splitlines():
         possible = 1
         game = game.split(": ")
         id = int(game[0].split(' ')[1])
         for set in game[1].split("; "):
             for reveal in set.split(", "):
-                reveal = reveal.split(' ')
-                num = int(reveal[0])
+                num = int(reveal.split(' ')[0])
                 match reveal[1]:
                     case "red":
-                        if num > 12:
-                            possible = 0
+                        possible = num <= 12
                     case "green":
-                        if num > 13:
-                            possible = 0
+                        possible = num <= 13
                     case "blue":
-                        if num >14:
-                            possible = 0
-                    case _:
-                        next
-        if possible == 1:
+                        possible = num <= 14
+        if possible:
             answer += id
+            
     return answer
 
 def partb():
     answer = 0
+    
     for game in data.splitlines():
-        minBlue = 0
-        minRed = 0
-        minGreen = 0
-        game = game.split(": ")
-        for set in game[1].split("; "):
+        minBlue, minRed, minGreen = 0, 0, 0
+        game = game.split(": ")[1].split("; ")
+        for set in game:
             for reveal in set.split(", "):
-                reveal = reveal.split(' ')
-                num = int(reveal[0])
+                num = int(reveal.split(' ')[0])
                 match reveal[1]:
                     case "red":
-                        if num > minRed:
-                            minRed = num
+                        minRed = max(minRed, num)
                     case "green":
-                        if num > minGreen:
-                            minGreen = num
+                        minGreen = max(minGreen, num)
                     case "blue":
-                        if num > minBlue:
-                            minBlue = num
-                    case _:
-                        next 
+                        minBlue = max(minBlue, num)
         answer += minBlue * minRed * minGreen
+        
     return answer
 
 submit(parta(), part="a")
