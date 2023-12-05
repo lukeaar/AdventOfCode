@@ -7,8 +7,7 @@ def parta():
     answer = 0
     
     for card in data.splitlines():
-        card = card.split(": ")[1]
-        card = card.split(" | ")
+        card = card.split(": ")[1].split(" | ")
         winningNumbers = card[0].split(' ')
         cardNumbers = card[1].split(' ')
         score = 0
@@ -25,12 +24,11 @@ def parta():
 def partb():
     cards = data.splitlines()
     answer = len(cards)
-    
     copyTable = [0] * len(cards)
     cardNumber = 0
+    
     for card in cards:
-        card = card.split(": ")[1]
-        card = card.split(" | ")
+        card = card.split(": ")[1].split(" | ")
         winningNumbers = card[0].split(' ')
         cardNumbers = card[1].split(' ')
         score = 0
@@ -42,8 +40,7 @@ def partb():
             if i < len(cards):
                 copyTable[i] = copyTable[i] + 1 * (copyTable[cardNumber]+1)
             score -= 1
-        cardNumber += 1
-            
+        cardNumber += 1          
     answer = answer + sum(copyTable)
     
     return answer
