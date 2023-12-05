@@ -42,29 +42,28 @@ def partb():
     for i in range(rows):
         for j in range(columns):
             if schematic[i][j] == '*':
-                n1 = 0
-                n2 = 0
+                n1, n2 = 0, 0
                 overgear = 0
                 for x in range(i-1,i+2):
                     for y in range(j-1,j+2):
-                        if x >= 0 and x < rows and y >= 0 and y < columns:
-                            if schematic[x][y].isdigit():
-                                num = schematic[x][y]
-                                z = y - 1
-                                while z >= 0 and schematic[x][z].isdigit():
-                                    num = schematic[x][z] + num
-                                    z -= 1
-                                z = y + 1
-                                while z < columns and schematic[x][z].isdigit():
-                                    num = num + schematic[x][z]
-                                    z += 1
-                                num = int(num)
-                                if n1 == 0:
-                                    n1 = num
-                                elif n1 != num and n2 == 0:
-                                    n2 = num
-                                elif n1 != num and n2 != num:
-                                    overgear = 1
+                        num = schematic[x][y]
+                        if (x >= 0 and x < rows and y >= 0 and y < columns 
+                                and num.isdigit()):
+                            z = y - 1
+                            while z >= 0 and schematic[x][z].isdigit():
+                                num = schematic[x][z] + num
+                                z -= 1
+                            z = y + 1
+                            while z < columns and schematic[x][z].isdigit():
+                                num = num + schematic[x][z]
+                                z += 1
+                            num = int(num)
+                            if n1 == 0:
+                                n1 = num
+                            elif n1 != num and n2 == 0:
+                                n2 = num
+                            elif n1 != num and n2 != num:
+                                overgear = 1
                 if not overgear:
                     answer += n1 * n2
                     
