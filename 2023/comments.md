@@ -15,3 +15,5 @@ times, records = [ list(map(int,line[9:].split()))
                     for line in data.splitlines() ]
 ```
 Both the method of converting a list of strings to integers via a map function (rather than in a loop) as well as this recently-unbeknownst to me formatting of a for loop are very useful.
+# Day 7
+Easier than expected given the pattern seen so far. My solution has a lot of code duplication, but it was the easiest way to the answer.
