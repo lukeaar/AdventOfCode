@@ -17,3 +17,5 @@ times, records = [ list(map(int,line[9:].split()))
 Both the method of converting a list of strings to integers via a map function (rather than in a loop) as well as this recently-unbeknownst to me formatting of a for loop are very useful.
 # Day 7
 Easier than expected given the pattern seen so far. My solution has a lot of code duplication, but it was the easiest way to the answer.
+# Day 8
+I initially dismissed the LCM solution due to the possibilities of multiple end-points within each loop, but after I was unable to come up with a more elegent solution I went to reddit and saw that the input data is crafted in such a way as to have only one exit node per loop. An LCM algorithm being build into numpy makes the hardest part of the problem trivial.
