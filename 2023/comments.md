@@ -21,3 +21,15 @@ Easier than expected given the pattern seen so far. My solution has a lot of cod
 I initially dismissed the LCM solution due to the possibilities of multiple end-points within each loop, but after I was unable to come up with a more elegent solution I went to reddit and saw that the input data is crafted in such a way as to have only one exit node per loop. An LCM algorithm being build into numpy makes the hardest part of the problem trivial.
 # Day 9
 Another unexpectedly easy day.
+# Day 10
+I was surprised to see that others had doubled the size of the map and then used a flood-fill algorithm for part two. I think that counting vertical bars is easier.
+This is the first day of this year that I've been able to use a function from my "aoc_tools" helper library - forge_grid:
+```
+def forge_grid(l: list[str], t=int, sep=False) -> dict[tuple:type]:
+    grid = {}
+    for y, line in enumerate(l):
+        if sep: line = line.split(sep)
+        for x, element in enumerate(line):
+            grid[x,y] = t(element)
+    return grid
+```
