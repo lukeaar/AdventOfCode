@@ -7,7 +7,7 @@ I initially got caught by an edge case that wasn't present in the test data - a 
 # Day 4
 Today the pattern of harder/easier continues. Another uncomplicated day.
 # Day 5
-I am going to come back to day 5, as part two is giving me some headaches.
+While the logic for part two is obvious in retrospect, I missed it the first time through and had to see others' solutions prior to implementing my own.
 # Day 6
 A welcome reprieve after day 5, which allowed me to put in to practice some new Python I have learned:
 ```
