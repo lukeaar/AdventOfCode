@@ -33,3 +33,10 @@ def forge_grid(l: list[str], t=int, sep=False) -> dict[tuple:type]:
             grid[x,y] = t(element)
     return grid
 ```
+# Day 11
+Another simple day.
+# Day 12
+I had to re-do my solution for part 1 when I saw part 2 in order to make the result cacheable in a useful way. I learned another useful trick, today and it is one that I've been particularly looking for):
+```
+return 1 if "#" not in input else 0
+```
