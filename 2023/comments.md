@@ -40,3 +40,5 @@ I had to re-do my solution for part 1 when I saw part 2 in order to make the res
 ```
 return 1 if "#" not in input else 0
 ```
+# Day 13
+Short day today, but it has highlighted to me that I really need to write a good "Grid" class in my aoc_tools library. Not only would column/row getters be useful, but axes of symmetry could be useful in the future, too.
