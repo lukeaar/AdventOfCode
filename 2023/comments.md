@@ -42,3 +42,99 @@ return 1 if "#" not in input else 0
 ```
 # Day 13
 Short day today, but it has highlighted to me that I really need to write a good "Grid" class in my aoc_tools library. Not only would column/row getters be useful, but axes of symmetry could be useful in the future, too.
+# Day 14
+I was running into silly bugs in my initial implementation, so took this day as an opportunity to make a grid class:
+```
+class Grid:
+    def __init__(self, input=[[]], t=int, sep=False):
+        self.data = []
+        for row in input:
+            self.data.append([])
+            if sep: row = row.split(sep)
+            for element in row: self.data[-1].append(t(element))
+            
+    def __iter__(self):
+        self.itvar = 0
+        self.itreturn = self.data[0][0]
+        return self
+    
+    def __next__(self):
+        x = self.itreturn
+        self.itvar += 1
+        try: self.itreturn = self.data[self.itvar//len(self.data[0])][
+            self.itvar%len(self.data[0])]
+        except: raise StopIteration
+        return x
+    
+    def __len__(self):
+        return len(self.data)
+    
+    def __str__(self):
+        return str(self.data)
+
+    def __repr__(self):
+        return repr(self.data)
+        
+    def hashable(self) -> tuple:
+        return tuple(map(tuple,self.data))
+    
+    def __hash__(self):
+        return hash(self.hashable())
+    
+    def rows(self) -> list[list]:
+        return self.data
+        
+    def columns(self) -> list[list]:
+        return [[row[x] for row in self.data] for x in range(len(self.data[0]))]
+        
+    def row(self, y: int) -> list:
+        return self.data[y]
+        
+    def column(self, x: int) -> list:
+        return [row[x] for row in self.data]
+        
+    #fix to use .insert
+    def add_rows(self, y:int, n=1, fill=None):
+        new_data = []
+        for data_y, row in enumerate(self.data):
+            if data_y == y:
+                for i in range(n): new_data.append([fill]*len(self.data[0]))
+            new_data.append(row)
+        if y >= len(self.data):
+            for i in range(n): new_data.append([fill]*len(self.data[0]))
+        self.data = new_data
+    
+    def append_rows(self, n=1, fill=None):
+        self.add_rows(len(self.data),n,fill)
+        
+    def remove_rows(self, y=-1, n=1):
+        for i in range(n): self.data.pop(y)
+        
+    # fix to use .insert
+    def add_columns(self, x=-1, n=1, fill=None):
+        for y, row in enumerate(self.data):
+            new_row = []
+            for data_x, value in enumerate(row):
+                if data_x == x:
+                    for i in range(n): new_row.append(fill)
+                new_row.append(value)
+            if x >= len(row):
+                for i in range(n): new_row.append(fill)
+            self.data[y] = new_row
+        
+    def append_columns(self, n=1, fill=None):
+        self.add_columns(len(self.data[0]),n,fill)
+        
+    def remove_columns(self, x=-1, n=1):
+        for i in range(len(self.data)):
+            for j in range(n): self.data[i].pop(x)
+        
+    def get(self, x: int, y: int):
+        return self.data[y][x]
+        
+    def set(self, x: int, y: int, value):
+        self.data[y][x] = value
+        return value
+```
+This are obviously some optimisations to be made, and a few more functions to add, but it should make future grid-based problems much easier.
+I initially tried to solve this problem using a cache, but realised finding the loop would computationally better than running a billion times through a cached spin function.
