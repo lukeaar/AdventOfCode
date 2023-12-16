@@ -140,3 +140,5 @@ There are obviously some optimisations to be made, and a few more functions to a
 I initially tried to solve this problem using a cache, but realised finding the loop would computationally better than running a billion times through a cached spin function.
 # Day 15
 Another simple day, which is a suprise this far into the month. I am expecting difficulty to start ramping tomorrow.
+# Day 16
+Another delay to the difficulty spike. I could do lots of optimisation to my solution (i.e. not using a global variable as the dictionary, requiring .reset() calls etcetera, but it works.
