@@ -136,5 +136,7 @@ class Grid:
         self.data[y][x] = value
         return value
 ```
-This are obviously some optimisations to be made, and a few more functions to add, but it should make future grid-based problems much easier.
+There are obviously some optimisations to be made, and a few more functions to add, but it should make future grid-based problems much easier.
 I initially tried to solve this problem using a cache, but realised finding the loop would computationally better than running a billion times through a cached spin function.
+# Day 15
+Another simple day, which is a suprise this far into the month. I am expecting difficulty to start ramping tomorrow.
