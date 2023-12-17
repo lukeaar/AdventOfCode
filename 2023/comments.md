@@ -142,3 +142,5 @@ I initially tried to solve this problem using a cache, but realised finding the 
 Another simple day, which is a suprise this far into the month. I am expecting difficulty to start ramping tomorrow.
 # Day 16
 Another delay to the difficulty spike. I could do lots of optimisation to my solution (i.e. not using a global variable as the dictionary, requiring .reset() calls etcetera, but it works.
+# Day 17
+Although I have a solution that gets both stars, it is very inefficient and slow and requires some optimisation prior to posting.
