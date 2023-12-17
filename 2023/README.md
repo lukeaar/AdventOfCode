@@ -143,4 +143,4 @@ Another simple day, which is a suprise this far into the month. I am expecting d
 # Day 16
 Another delay to the difficulty spike. I could do lots of optimisation to my solution (i.e. not using a global variable as the dictionary, requiring .reset() calls etcetera, but it works.
 # Day 17
-Although I have a solution that gets both stars, it is very inefficient and slow and requires some optimisation prior to posting.
+Not the most optimised solution, but it finishes in a couple of seconds. I was initially caught out by not including direction and length of time going in same direction as part of the states passed into the algorithm which was a slightly annoying fix. I will spend some time thinking about the optimal way to make a custom Dijkstra solution to put in my helper library that will be customisable enough to deal with problems like this. It will likely need verticies to be tuples and will need to accept at least two functions - one that determines the edges from a vertex and another that determines the weight.
